@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Agent RAG</title>
+</head>
+<body>
+    <h2>Ask a question</h2>
+    <form method="post">
+        <input type="text" name="question" placeholder="Your question..." style="width: 300px;" required>
+        <button type="submit">Ask</button>
+    </form>
+
+    {% if result %}
+    <h3>Answer:</h3>
+    <p>{{ result.answer }}</p>
+
+    <h4>Generated SQL:</h4>
+    <pre>{{ result.sql_query }}</pre>
+
+    <h4>Result Rows:</h4>
+    <ul>
+        {% for row in result.result_rows %}
+            <li>{{ row }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
